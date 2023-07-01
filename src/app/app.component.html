@@ -1,0 +1,141 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Buscar ciudad" name="city"
+    [(ngModel)]="cityName">
+  </form>
+</div>
+
+
+<div class="container" *ngIf="weatherData">
+  <div class="upper-data">
+   <img src="../assets/verano.jpg" *ngIf="weatherData.main.temp_max > 15">
+   <img src="../assets/invierno.jpg" *ngIf="weatherData.main.temp_min <= 15">
+
+   <div class="weather-data">
+     <div class="location">{{ weatherData.coord }}</div>
+     <div class="temperature">{{ weatherData.main.temp | number: '1.0-0'}}ºC</div>
+   </div>
+
+  </div>
+  <div class="lower-data">
+   <div class="more-info-label">
+     Mas Información:
+   </div>
+
+   <div class="more-info-container">
+     <div class="info-block">
+       <div class="info-blocl-label">
+         <img src="../assets/frio.png" alt="">
+         <span>Min</span>
+       </div>
+       <div class="info-block-value">
+        {{ weatherData.main.temp_min | number: '1.0-0' }}
+       </div>
+     </div>
+
+     <div class="info-block">
+       <div class="info-blocl-label">
+         <img src="../assets/calor.png" alt="">
+         <span>Max</span>
+       </div>
+       <div class="info-block-value">
+         {{ weatherData.main.temp_max | number: '1.0-0'}}
+       </div>
+     </div>
+
+     <div class="info-block">
+       <div class="info-blocl-label">
+         <img src="../assets/humedad.png" alt="">
+         <span>Humedad</span>
+       </div>
+       <div class="info-block-value">
+        {{ weatherData.main.humidity }}%
+       </div>
+     </div>
+
+     <div class="info-block">
+       <div class="info-blocl-label">
+         <img src="../assets/viento.png" alt="">
+         <span>Viento</span>
+       </div>
+       <div class="info-block-value">
+         {{ weatherData.wind.speed }}km/h
+       </div>
+     </div>
+
+
+   </div>
+  </div>
+
+
+ </div>
+
+
+<!--<div class="container">
+ <div class="upper-data">
+  <img src="../assets/verano.jpg" *ngIf="14 > 15">
+  <img src="../assets/invierno.jpg" *ngIf="14 <= 15">
+
+  <div class="weather-data">
+    <div class="location">Buenos Aires</div>
+    <div class="temperature">{{ 14.40 | number: '1.0-0'}}ºC</div>
+  </div>
+
+ </div>
+ <div class="lower-data">
+  <div class="more-info-label">
+    Mas Información:
+  </div>
+
+  <div class="more-info-container">
+    <div class="info-block">
+      <div class="info-blocl-label">
+        <img src="../assets/frio.png" alt="">
+        <span>Min</span>
+      </div>
+      <div class="info-block-value">
+        10ºC
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-blocl-label">
+        <img src="../assets/calor.png" alt="">
+        <span>Max</span>
+      </div>
+      <div class="info-block-value">
+        20ºC
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-blocl-label">
+        <img src="../assets/humedad.png" alt="">
+        <span>Humedad</span>
+      </div>
+      <div class="info-block-value">
+        77%
+      </div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-blocl-label">
+        <img src="../assets/viento.png" alt="">
+        <span>Viento</span>
+      </div>
+      <div class="info-block-value">
+        11 km/h
+      </div>
+    </div>
+
+
+  </div>
+ </div>
+
+
+</div> -->
+
+
+
+
+<router-outlet></router-outlet>
